@@ -1,18 +1,155 @@
 <!DOCTYPE html>
-<html>
-<style>
-body {
-background-color: black;
-}
-h1 {
-color: white;
-}
-p {
-color: cyan;
-}
-</style>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub pages</p>
-</body>
+<html lang = "en"> 
+    <head>
+        <meta charset = "UTF-8">
+    </head>
+    <style>
+        .logo {
+            position: relative;
+            left: 800px;
+            top: 100px;
+        }
+        .search{
+            position: absolute;
+            left: 730px;
+            top: 305px;
+            width: 500px;
+            height: 40px;
+            border: none;
+        }
+        .google_search_bar {
+            width: 600px;
+            height: 45px;
+            border: 1px solid lightslategray;
+            border-radius: 25px;
+            position: relative;
+            top: 250px;
+            left: 670px;
+        }
+        ul {
+            list-style-type: none;
+            margin:0;
+            padding: 0;
+            overflow: hidden;
+            background-color: rgb(255, 255, 255);
+            
+        }
+        .google_search {
+            background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1);
+            background-color: #f2f2f2;
+            border: 1px solid #f2f2f2;
+            border-radius: 4px;
+            color: #5F6368;
+            font-family: arial,sans-serif;
+            font-size: 14px;
+            margin: 11px 4px;
+            padding: 0 16px;
+            line-height: 27px;
+            height: 36px;
+            min-width: 54px;
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            top: 215px;
+            left: 515px;
+        }
+        li {
+            float: left;
+        }
+        #Im_feeling_lucky {
+            left: 520px;
+        }
+        li a {
+            display: block;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+        }
+        li a:hover {
+            text-decoration-line: underline;
+        }
+        .wFncld { 
+            margin-top: 3px;
+            color: #9AA0A6;
+            height: 25px;
+            width: 25px;
+            display: inline-block;
+            fill: currentColor;
+            height: 24px;
+            line-height: 24px;
+            position: relative;
+            width: 24px;
+            position: absolute;
+            left: 700px;
+            top: 315px;
+        }
+        .HPVvwb {
+            height: 24px;
+            width: 24px;
+            vertical-align: middle;
+            flex: 1 0 auto;
+            display: flex;
+            cursor: pointer;
+            align-items: center;
+            border: 0;
+            background: transparent;
+            outline: none;
+            padding: 0 8px;
+            line-height: 44px;
+            position: absolute;
+            top: 315px;
+            left: 1235px;
+        }
+        .navbar {
+            overflow: hidden;
+            background-color: #f2f2f2;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            border-top: 1px solid #e4e4e4;
+            line-height: 10px;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: #5f6368;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 14px;
+            font-family: Arial, Helvetica, sans-serif;
+            Position: relative;
+        }
+
+    </style>
+    <ul>
+        <li><a href="#About">About</a></li>
+        <li><a href="#Store">Store</a></li>
+        <li><a style = "position: relative; left: 1550px;" href = "#Gmail">Gmail</a></li>
+        <li><a style = "position: relative; left: 1530px;" href = "#Images">Images</a></li>
+      </ul>
+    
+    <div class="google_search_bar"></div>
+    <img class = "logo" src = "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png">
+    <input class = "search" type="text">
+    <button class = "google_search">Google Search</button>
+    <button class = "google_search" id="Im_feeling_lucky">I'm feeling lucky</button>
+    <svg class = "wFncld" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
+    <svg class="HPVvwb" style = "height: 24px; width: 24px; vertical-align: middle;" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 15c1.66 0 3-1.31 3-2.97v-7.02c0-1.66-1.34-3.01-3-3.01s-3 1.34-3 3.01v7.02c0 1.66 1.34 2.97 3 2.97z" fill="#4285f4"></path><path d="m11 18.08h2v3.92h-2z" fill="#34a853"></path><path d="m7.05 16.87c-1.27-1.33-2.05-2.83-2.05-4.87h2c0 1.45 0.56 2.42 1.47 3.38v0.32l-1.15 1.18z" fill="#f4b400"></path><path d="m12 16.93a4.97 5.25 0 0 1 -3.54 -1.55l-1.41 1.49c1.26 1.34 3.02 2.13 4.95 2.13 3.87 0 6.99-2.92 6.99-7h-1.99c0 2.92-2.24 4.93-5 4.93z" fill="#ea4335"></path></svg>
+    <div class="navbar">
+        <a href="#Advertising"  >Advertising</a>
+        <a href="#Business">Business</a>
+        <a href="#How_Search_works">How Search works</a>
+        <a href="#Privacy" style = "left: 1350px;">Privacy</a>
+        <a href="#Terms" style = "left: 1340px">Terms</a>
+        <a href="#Settings" style = "left: 1330px"> Settings</a>
+    </div>
+    <body>
+        <h1> 
+    </body>
 </html>
