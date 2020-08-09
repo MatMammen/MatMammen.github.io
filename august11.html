@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+    <button class = "btn" style = "font-size: 40px">Click me on August 11th</button>
+    <div class = "bdayEvents">
+    </div>
+    <script>
+        btn = document.querySelector('.btn');
+        btn.addEventListener('click', () => {
+            if (dateCheck()) {
+                btn.remove();
+                addImage();
+                addSong();
+                reloadPage();
+            }
+            else {
+                alert('Come back on August 11th');
+            }
+            
+        })
+        function dateCheck() {
+            let d = new Date();
+            let today = d.getDate();
+            let bDate = 11;
+            if (today == bDate) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        function addImage() {
+            const image = document.createElement('img');
+            image.src = 'Media/Abdul_Birthday.jpg';
+            document.querySelector('.bdayEvents').appendChild(image);
+        }
+        function addSong() {
+            var audio = new Audio('Media/Halo_Happy_Birthday.wav');
+            audio.play();
+        }
+        function reloadPage() {
+            const reloadButton = document.createElement('button');
+            reloadButton.textContent = "Press me to restart the page";
+            reloadButton.style.fontSize = "xx-large";
+            document.querySelector('.bdayEvents').appendChild(reloadButton);
+            reloadButton.addEventListener('click', () => {
+                window.location.reload();
+            })
+        }
+    </script>
+</body>
+</html>
