@@ -5,9 +5,9 @@
     <meta charset="UTF-8"/>
 </head>
 <body>
-    <button id = "Rock">Rock</button>
-    <button id = "Paper">Paper</button>
-    <button id = "Scissors">Scissors</button>
+    <button style = 'font-size: 50px' id = "Rock">Rock</button>
+    <button style = 'font-size: 50px' id = "Paper">Paper</button>
+    <button style = 'font-size: 50px' id = "Scissors">Scissors</button>
     <p id ="results"></p>
     <p id = "compTag">Computer:</p>
     <p id = "compScore"></p>
@@ -134,6 +134,7 @@
         function addReload() {
             const reload = document.createElement('button');
             reload.textContent = 'Click me to retry!';
+            reload.style.fontSize = '72px';
             container.appendChild(reload);
             reload.addEventListener('click', () => {
                 window.location.reload();
