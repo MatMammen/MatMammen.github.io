@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rock-Paper-Scissors</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+    <button id = "Rock">Rock</button>
+    <button id = "Paper">Paper</button>
+    <button id = "Scissors">Scissors</button>
+    <p id ="results"></p>
+    <p id = "compTag">Computer:</p>
+    <p id = "compScore"></p>
+    <p id = "playerTag">Player:</p>
+    <p id = "playerScore"></p>
+    <div id = "container"></div>
+    <script>
+        let playerWin = 0;
+        let compWin = 0;
+        const container = document.querySelector('#container');
+        const results = document.querySelector('#results')
+        const rock = document.querySelector('#Rock');
+        const compScore = document.querySelector('#compScore');
+        const playerScore = document.querySelector('#playerScore');
+        rock.addEventListener('click', () => {
+            if (compWin == 5 || playerWin == 5) {
+                return;
+            }
+            onButtonClick('Rock')
+        });
+        const paper = document.querySelector('#Paper');
+        paper.addEventListener('click', () => {
+            if (compWin == 5 || playerWin == 5) {
+                return;
+            }
+            onButtonClick('Paper')
+        });
+        const scissors = document.querySelector('#Scissors');
+        scissors.addEventListener('click', () => {
+            if (compWin == 5 || playerWin == 5) {
+                return;
+            }
+            onButtonClick('Scissors')
+        });
+        function computerPlay() {
+            let move = Math.floor(Math.random()*3);
+            switch (move) {
+                case 0:
+                    move = 'Rock';
+                    break;
+                case 1:
+                    move = 'Paper';
+                    break;
+                case 2:
+                    move = 'Scissors';
+                    break;
+            }
+            return move;
+        }
+        function playRound(playerSelection, computerSelection) {
+            let compwin = 0;
+            let playerwin = 0;
+            if (playerSelection == 'Rock') {
+                switch (computerSelection) {
+                    case 'Rock':
+                        reply = 'You tied!';
+                        break;
+                    case 'Paper':
+                        reply = 'You Lose! Paper beats Rock';
+                        compwin = compwin + 1
+                        break;
+                    case 'Scissors':
+                        reply = 'You Win! Rock beats Scissors';
+                        playerwin = playerwin + 1
+                        break;
+                }
+            }
+            else if (playerSelection == 'Paper') {
+                switch (computerSelection) {
+                    case 'Rock':
+                        reply = 'You Win! Paper beats Rock';
+                        playerwin = playerwin + 1
+                        break;
+                    case 'Paper':
+                        reply = 'You tied!';
+                        break;
+                    case 'Scissors':
+                        reply = 'You Lose! Scissors beats Paper';
+                        compwin = compwin + 1
+                        break;
+                }
+            }
+            else {
+                switch (computerSelection) {
+                    case 'Rock':
+                        reply = 'You Lose! Rock beats Paper';
+                        compwin = compwin + 1
+                        break;
+                    case 'Paper':
+                        reply = 'You Win! Scissors beats Paper';
+                        playerwin = playerwin + 1
+                        break;
+                    case 'Scissors':
+                        reply = 'You tied!';
+                        break;
+                }
+            }
+            printRoundResult(reply);
+            return (compwin > 0 ? 1 : playerwin > 0 ? 2 : 0);
+        }
+        function printRoundResult(reply) {
+            const replyText = document.createElement('p');
+            replyText.textContent = reply;
+            results.appendChild(replyText);
+
+
+        }
+        function onButtonClick(choice) {
+            Reply = playRound(choice, computerPlay());
+            compWin = (Reply == 1) ? compWin + 1 : compWin;
+            playerWin = (Reply == 2) ? playerWin + 1 : playerWin;
+            compScore.textContent = compWin;
+            playerScore.textContent = playerWin;
+            if (compWin == 5 || playerWin == 5) {
+                if (compWin == 5) {
+                    printRoundResult('The computer wins!')
+                }
+                else {
+                    printRoundResult('You win!')
+                }
+                addReload();
+            }
+        }
+        function addReload() {
+            const reload = document.createElement('button');
+            reload.textContent = 'Click me to retry!';
+            container.appendChild(reload);
+            reload.addEventListener('click', () => {
+                window.location.reload();
+            });
+        }
+
+    </script>
+</body>
+</html>
