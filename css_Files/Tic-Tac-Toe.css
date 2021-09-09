@@ -1,0 +1,32 @@
+.boardTable {
+    display: flex;
+    background-color: aqua;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.boardTable-cell{
+    background-color: blue;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px; 
+    flex: 0 32%;
+    margin-bottom: 2%;
+    height: 100px;
+    
+}
+.text-button-area{
+    position: relative;
+    height:50px;
+    width:800px;
+    background-color:transparent;
+}
+.text-area {
+    position: relative;
+    left: 20em;
+}
+.button-area {
+    position: relative;
+    left: 25em;
+    top: .2em;
+}
