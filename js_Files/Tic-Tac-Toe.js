@@ -15,17 +15,33 @@ const gameBoard = (()=> {
             parentDiv.appendChild(item);
         }
         //adding text and button area
-        //figure out how to center them 
         const textAndButtonArea = document.createElement('div')
         textAndButtonArea.className = "text-button-area"
         parentDiv.appendChild(textAndButtonArea);
         const textArea = document.createElement('div');
         textArea.className = "text-area";
-        textArea.textContent = "Player 1 turn"
-        //textArea.position = "relative";
-        //textArea.style.left = "50px"
-
+        textArea.textContent = ""
         textAndButtonArea.appendChild(textArea);
+        //add inputs for names
+        const player1Name = document.createElement('input')
+        textAndButtonArea.appendChild(player1Name)
+        player1Name.placeholder = "Enter Player 1 name"
+        const player2Name = document.createElement('input')
+        player2Name.placeholder = "Enter Player 2 name";
+        textAndButtonArea.appendChild(player2Name)
+        //add inputs for colors
+        const player1Color = document.createElement('input')
+        player1Color.type = "color"
+        //textAndButtonArea.appendChild(player1Color);
+        textAndButtonArea.insertBefore(player1Color, player2Name)
+        const player2Color = document.createElement('input')
+        player2Color.type = "color"
+        textAndButtonArea.appendChild(player2Color);
+        //player2Color
+        //function to remove stuff
+        function removeContent(parent, child) {
+            parent.removeChild(child)
+        }
         //eventlistener stuff
         let counter = 0;
         //function to determine element index
@@ -51,37 +67,39 @@ const gameBoard = (()=> {
             //define functions for each player
             function player1Turn() {
                 e.target.textContent = `${Player1.attribute}`
-                e.target.style.background = `${Player1.color}`
+                e.target.style.background = `${player1Color.value}`
+                e.target.style.borderStyle = "hidden"
                 const pickedArray = getElementIndex(e.target)
                 gameBoard.gameBoardArray[pickedArray] = Player1.attribute;
                 counter++
                 if (Player1.checkWin(gameBoardArray)) {
-                    textArea.textContent = "Player 1 has won!"
+                    textArea.textContent = `${player1Name.value} has won!`
                     counter = counter + 20
                     resetButton()
                 }
                 else {
-                    textArea.textContent = "Player 2 turn"
+                    textArea.textContent = `${player2Name.value}'s turn`
                 }
             }
             function player2Turn() {
                 e.target.textContent = `${Player2.attribute}`
-                e.target.style.background = `${Player2.color}`
+                e.target.style.background = `${player2Color.value}`
+                e.target.style.borderStyle = "hidden"
                 const pickedArray = getElementIndex(e.target)
                 gameBoard.gameBoardArray[pickedArray] = Player2.attribute;
                 counter++
                 if (Player2.checkWin(gameBoardArray)) {
-                    textArea.textContent = "Player 2 has won!"
+                    textArea.textContent = `${player2Name.value} has won!`
                     counter = counter + 20
                     resetButton();
                 }
                 else {
-                    textArea.textContent = "Player 1 turn"
+                    textArea.textContent = `${player1Name.value}'s turn`
                 }
             }
-            if(e.target.className == "boardTable-cell" && e.target.textContent == '')  {
+            if(e.target.className == "boardTable-cell" && e.target.textContent == '' && player1Name.value != '' && player2Name.value != '' && player1Color.value != player2Color.value)  {
                 switch(counter){
-                    case 0:player1Turn();break;
+                    case 0:player1Turn();removeContent(textAndButtonArea, player1Name);removeContent(textAndButtonArea, player2Name);removeContent(textAndButtonArea, player1Color);removeContent(textAndButtonArea, player2Color);break;
                     case 1:player2Turn();break;
                     case 2:player1Turn();break;
                     case 3:player2Turn();break;
@@ -96,6 +114,12 @@ const gameBoard = (()=> {
         
         
                 }
+            }
+            else if (player1Name.value == '' || player2Name.value == '') {
+                textArea.textContent = "Please name your players!"
+            }
+            else if (player1Color.value == player2Color.value) {
+                textArea.textContent = "Player Colors cannot be the exact same!"
             }
         })
     }
