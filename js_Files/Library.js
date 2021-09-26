@@ -8,8 +8,6 @@ else {
     var myLibrary = JSON.parse(localStorage.getItem("myLibraryStored"))
 }
 
-//let myLibrary = [];
-
 
 
 
@@ -26,17 +24,16 @@ let submitButton = document.createElement('button');
 submitButton.textContent = "submit book";
 displayBooks(myLibrary);
 
-function Book(author, title, pages, read) {
-    //the constructor
-    this.author = author;
-    this.title = title;
-    this.pages = pages;
-    this.read = read;
-    //add function in prototype and then add that function as an event listener
-    this.toggle = function() {
-        this.read = (this.read == 'Yes') ? 'No' : 'Yes'
+class Book {
+    constructor(author, title, pages, read) {
+        this.author = author;
+        this.title = title;
+        this.pages = pages;
+        this.read = read;
     }
-    
+    toggle() {
+        this.read = (this.read == 'Yes') ? 'No' : 'Yes';
+    }
 }
 
 function inputButton() {
